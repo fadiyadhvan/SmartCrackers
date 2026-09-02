@@ -2,20 +2,62 @@
 <html>
 
 <head>
-
     <title>Shopping Cart - SmartCrackers</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
 
+    <style>
+        .quantity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .quantity form {
+            display: inline;
+            margin: 0;
+        }
+
+        .quantity-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 8px;
+            background: #ff9800;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .quantity-number {
+            font-size: 18px;
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .remove-btn {
+            color: white;
+            background: #e53935;
+            padding: 9px 14px;
+            border-radius: 7px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .remove-btn:hover {
+            background: #c62828;
+        }
+    </style>
 </head>
 
 <body>
-
-
-<!-- =========================
-     NAVBAR
-========================= -->
 
 <nav class="navbar">
 
@@ -25,34 +67,20 @@
 
     <div class="nav-links">
 
-        <a href="/">
-            🏠 Home
-        </a>
+        <a href="/">🏠 Home</a>
 
-        <a href="/products">
-            🎆 Products
-        </a>
+        <a href="/products">🎆 Products</a>
 
-        <a href="/recommendation">
-            🤖 AI Recommendation
-        </a>
+        <a href="/recommendation">🤖 AI Recommendation</a>
 
-        <a href="/cart">
-            🛒 Cart
-        </a>
+        <a href="/cart">🛒 Cart</a>
 
-        <a href="/orders">
-            📦 My Orders
-        </a>
+        <a href="/orders">📦 My Orders</a>
 
     </div>
 
 </nav>
 
-
-<!-- =========================
-     CART
-========================= -->
 
 <div class="container">
 
@@ -63,23 +91,15 @@
 
     {% if cart_items %}
 
-
-    <!-- CART TABLE -->
-
     <div class="cart-box">
 
         <div class="cart-header">
 
             <div>Product</div>
-
             <div>Category</div>
-
             <div>Quantity</div>
-
             <div>Price</div>
-
             <div>Total</div>
-
             <div>Action</div>
 
         </div>
@@ -87,26 +107,21 @@
 
         {% for item in cart_items %}
 
-
         <div class="cart-row">
 
             <!-- PRODUCT -->
 
             <div>
-
                 <strong>
                     {{ item.name }}
                 </strong>
-
             </div>
 
 
             <!-- CATEGORY -->
 
             <div>
-
                 {{ item.category }}
-
             </div>
 
 
@@ -114,27 +129,45 @@
 
             <div class="quantity">
 
-                <a href="/decrease/{{ item.id }}"
-                   class="quantity-btn">
+                <!-- DECREASE -->
 
-                    ➖
+                <form action="/update_cart/{{ item.id }}" method="POST">
 
-                </a>
+                    <input type="hidden"
+                           name="quantity"
+                           value="{{ item.quantity - 1 if item.quantity > 1 else 1 }}">
+
+                    <button type="submit"
+                            class="quantity-btn"
+                            {% if item.quantity <= 1 %}disabled{% endif %}>
+                        ➖
+                    </button>
+
+                </form>
 
 
-                <span>
+                <!-- CURRENT QUANTITY -->
 
+                <span class="quantity-number">
                     {{ item.quantity }}
-
                 </span>
 
 
-                <a href="/increase/{{ item.id }}"
-                   class="quantity-btn">
+                <!-- INCREASE -->
 
-                    ➕
+                <form action="/update_cart/{{ item.id }}" method="POST">
 
-                </a>
+                    <input type="hidden"
+                           name="quantity"
+                           value="{{ item.quantity + 1 }}">
+
+                    <button type="submit"
+                            class="quantity-btn"
+                            {% if item.quantity >= item.stock %}disabled{% endif %}>
+                        ➕
+                    </button>
+
+                </form>
 
             </div>
 
@@ -142,20 +175,16 @@
             <!-- PRICE -->
 
             <div>
-
                 ₹{{ item.price }}
-
             </div>
 
 
             <!-- TOTAL -->
 
             <div>
-
                 <strong>
-                    ₹{{ item.total }}
+                    ₹{{ "%.2f"|format(item.price|float * item.quantity) }}
                 </strong>
-
             </div>
 
 
@@ -163,8 +192,9 @@
 
             <div>
 
-                <a href="/remove/{{ item.id }}"
-                   class="remove-btn">
+                <a href="/remove_from_cart/{{ item.id }}"
+                   class="remove-btn"
+                   onclick="return confirm('Remove this product from cart?');">
 
                     🗑️ Remove
 
@@ -174,9 +204,7 @@
 
         </div>
 
-
         {% endfor %}
-
 
     </div>
 
@@ -186,19 +214,15 @@
     <div class="cart-summary">
 
         <h2>
-
             💰 Grand Total:
-            ₹{{ grand_total }}
-
+            ₹{{ "%.2f"|format(total) }}
         </h2>
 
 
         <a href="/checkout">
 
             <button class="checkout-btn">
-
                 🛍️ Proceed to Checkout
-
             </button>
 
         </a>
@@ -207,8 +231,20 @@
         <a href="/products">
 
             <button class="continue-btn">
-
                 🎆 Continue Shopping
+            </button>
+
+        </a>
+
+
+        <br><br>
+
+        <a href="/clear_cart">
+
+            <button class="remove-btn"
+                    onclick="return confirm('Clear the entire cart?');">
+
+                🗑️ Clear Cart
 
             </button>
 
@@ -218,7 +254,6 @@
 
 
     {% else %}
-
 
     <!-- EMPTY CART -->
 
@@ -232,25 +267,19 @@
             Add some products to your cart.
         </p>
 
-
         <a href="/products">
 
             <button class="btn">
-
                 🎆 Browse Products
-
             </button>
 
         </a>
 
     </div>
 
-
     {% endif %}
 
-
 </div>
-
 
 </body>
 
