@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCrackers Login</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/products">
+            🎆 Products
+        </a>
+
+        <a href="/recommendation">
+            🤖 AI Recommendation
+        </a>
+
+        <a href="/cart">
+            🛒 Cart
+        </a>
+
+        <a href="/register">
+            📝 Register
+        </a>
+
+        <a href="/login">
+            🔐 Login
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     LOGIN FORM
+========================= -->
+
+<div class="container">
+
+    <h1 class="title">
+        🔐 Login
+    </h1>
+
+
+    <div class="product-card">
+
+
+        <form action="/login" method="POST">
+
+
+            <p>
+                <strong>Email</strong>
+            </p>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <p>
+                <strong>Password</strong>
+            </p>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <br>
+            <br>
+
+
+            <button
+                type="submit"
+                class="btn"
+            >
+
+                🔐 Login
+
+            </button>
+
+
+        </form>
+
+
+        <br>
+
+
+        <p>
+            Don't have an account?
+        </p>
+
+
+        <a href="/register">
+
+            <button class="btn">
+                📝 Create Account
+            </button>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

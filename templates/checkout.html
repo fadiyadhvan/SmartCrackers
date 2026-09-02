@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCrackers Checkout</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/products">🎆 Products</a>
+
+        <a href="/recommendation">🤖 AI Recommendation</a>
+
+        <a href="/cart">🛒 Cart</a>
+
+        <a href="/orders">📦 My Orders</a>
+
+    </div>
+
+</nav>
+
+
+<!-- CHECKOUT -->
+
+<div class="container">
+
+    <h1 class="title">
+        🛍️ Checkout
+    </h1>
+
+
+    <!-- ORDER SUMMARY -->
+
+    <div class="product-card">
+
+        <h2>Order Summary</h2>
+
+        {% for item in cart_items %}
+
+        <p>
+            <strong>{{ item.name }}</strong>
+            × {{ item.quantity }}
+            = ₹{{ item.price * item.quantity }}
+        </p>
+
+        {% endfor %}
+
+        <hr>
+
+        <h2>
+            Total: ₹{{ total }}
+        </h2>
+
+    </div>
+
+
+    <!-- CUSTOMER DETAILS -->
+
+    <div class="product-card">
+
+        <h2>Customer Details</h2>
+
+
+        <form action="/place_order" method="POST">
+
+
+            <p>
+                <strong>Name</strong>
+            </p>
+
+            <input
+                type="text"
+                name="customer_name"
+                value="{{ customer_name }}"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <p>
+                <strong>Phone</strong>
+            </p>
+
+            <input
+                type="text"
+                name="phone"
+                placeholder="Enter phone number"
+                required
+            >
+
+
+            <p>
+                <strong>Address</strong>
+            </p>
+
+            <textarea
+                name="address"
+                placeholder="Enter your full address"
+                rows="4"
+                required
+            ></textarea>
+
+
+            <p>
+                <strong>City</strong>
+            </p>
+
+            <input
+                type="text"
+                name="city"
+                placeholder="Enter your city"
+                required
+            >
+
+
+            <p>
+                <strong>Payment Method</strong>
+            </p>
+
+            <select name="payment" required>
+
+                <option value="">
+                    Select Payment Method
+                </option>
+
+                <option value="Cash on Delivery">
+                    💵 Cash on Delivery
+                </option>
+
+                <option value="UPI">
+                    📱 UPI
+                </option>
+
+                <option value="Card">
+                    💳 Card
+                </option>
+
+            </select>
+
+
+            <br>
+            <br>
+
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                ✅ Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

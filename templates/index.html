@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCrackers | AI-Based Smart Crackers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ==================================================
+     NAVIGATION BAR
+================================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/login">🔐 Login</a>
+
+        <a href="/register">📝 Register</a>
+
+        <a href="/recommendation">🤖 AI Recommendation</a>
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/chatbot">💬 AI Chatbot</a>
+
+        <a href="/products">🎆 Products</a>
+
+        <a href="/orders">📦 My Orders</a>
+
+        <a href="/cart">🛒 Cart</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==================================================
+     HERO SECTION
+================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            🎆 Welcome to SmartCrackers
+        </h1>
+
+        <h2>
+            AI-Based Smart Crackers Shopping
+        </h2>
+
+        <p>
+            Discover the perfect crackers for your
+            celebration with our smart AI-powered
+            recommendation system.
+        </p>
+
+        <p>
+            Choose products according to your budget,
+            celebration type and preferences.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="/products"
+               class="home-btn">
+                🎆 Shop Products
+            </a>
+
+            <a href="/recommendation"
+               class="home-btn">
+                🤖 AI Recommendation
+            </a>
+
+            <a href="/chatbot"
+               class="home-btn">
+                💬 Ask AI
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     FEATURES SECTION
+================================================== -->
+
+<section class="features">
+
+    <h2>
+        🚀 Our Smart Features
+    </h2>
+
+
+    <div class="feature-grid">
+
+
+        <!-- AI Recommendation -->
+
+        <div class="feature-card">
+
+            <h3>
+                🤖 AI Product Recommendation
+            </h3>
+
+            <p>
+                Get personalized crackers recommendations
+                based on your budget and celebration needs.
+            </p>
+
+            <a href="/recommendation"
+               class="home-btn">
+                Try AI
+            </a>
+
+        </div>
+
+
+        <!-- Budget -->
+
+        <div class="feature-card">
+
+            <h3>
+                💰 Budget Recommendation
+            </h3>
+
+            <p>
+                Enter your budget and discover products
+                suitable for your celebration.
+            </p>
+
+            <a href="/recommendation"
+               class="home-btn">
+                Check Budget
+            </a>
+
+        </div>
+
+
+        <!-- Cart -->
+
+        <div class="feature-card">
+
+            <h3>
+                🛒 Smart Shopping Cart
+            </h3>
+
+            <p>
+                Add products to your cart, change quantities
+                and calculate your total automatically.
+            </p>
+
+            <a href="/cart"
+               class="home-btn">
+                Open Cart
+            </a>
+
+        </div>
+
+
+        <!-- Chatbot -->
+
+        <div class="feature-card">
+
+            <h3>
+                💬 AI Chatbot
+            </h3>
+
+            <p>
+                Ask our AI chatbot about products,
+                prices, budget and orders.
+            </p>
+
+            <a href="/chatbot"
+               class="home-btn">
+                Chat Now
+            </a>
+
+        </div>
+
+
+        <!-- Orders -->
+
+        <div class="feature-card">
+
+            <h3>
+                📦 Order Management
+            </h3>
+
+            <p>
+                View your previous orders and
+                check your order information easily.
+            </p>
+
+            <a href="/orders"
+               class="home-btn">
+                My Orders
+            </a>
+
+        </div>
+
+
+        <!-- Sales -->
+
+        <div class="feature-card">
+
+            <h3>
+                📊 Sales Prediction
+            </h3>
+
+            <p>
+                Analyze sales data and predict future
+                product demand using AI.
+            </p>
+
+            <a href="/admin"
+               class="home-btn">
+                Admin Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     SHOPPING SECTION
+================================================== -->
+
+<section class="features">
+
+    <h2>
+        🎉 Start Shopping
+    </h2>
+
+
+    <div class="feature-grid">
+
+
+        <!-- Login -->
+
+        <div class="feature-card">
+
+            <h3>
+                🔐 Login
+            </h3>
+
+            <p>
+                Already have an account?
+                Login to continue shopping.
+            </p>
+
+            <a href="/login"
+               class="home-btn">
+                Login
+            </a>
+
+        </div>
+
+
+        <!-- Register -->
+
+        <div class="feature-card">
+
+            <h3>
+                📝 Register
+            </h3>
+
+            <p>
+                New customer?
+                Create your SmartCrackers account.
+            </p>
+
+            <a href="/register"
+               class="home-btn">
+                Register
+            </a>
+
+        </div>
+
+
+        <!-- Products -->
+
+        <div class="feature-card">
+
+            <h3>
+                🎆 Products
+            </h3>
+
+            <p>
+                Explore our crackers and
+                celebration packs.
+            </p>
+
+            <a href="/products"
+               class="home-btn">
+                View Products
+            </a>
+
+        </div>
+
+
+        <!-- Cart -->
+
+        <div class="feature-card">
+
+            <h3>
+                🛒 Shopping Cart
+            </h3>
+
+            <p>
+                Check your selected products and
+                proceed to checkout.
+            </p>
+
+            <a href="/cart"
+               class="home-btn">
+                View Cart
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     ABOUT SECTION
+================================================== -->
+
+<section class="features">
+
+    <h2>
+        🌟 Why SmartCrackers?
+    </h2>
+
+
+    <div class="feature-grid">
+
+
+        <div class="feature-card">
+
+            <h3>
+                ⚡ Easy Shopping
+            </h3>
+
+            <p>
+                Browse products and add them
+                to your cart easily.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>
+                🤖 Smart AI
+            </h3>
+
+            <p>
+                Get recommendations based on
+                your budget and preferences.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>
+                💰 Budget Friendly
+            </h3>
+
+            <p>
+                Find products that match your
+                celebration budget.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>
+                📦 Easy Orders
+            </h3>
+
+            <p>
+                Place orders and view your
+                previous orders easily.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+    <h3>
+        🎆 SmartCrackers
+    </h3>
+
+    <p>
+        AI-Based Smart Crackers Shopping Website
+    </p>
+
+    <p>
+        🤖 AI Recommendation |
+        💬 AI Chatbot |
+        🛒 Smart Cart |
+        📦 Order Management
+    </p>
+
+    <p>
+        Safe • Smart • Easy Shopping
+    </p>
+
+    <p>
+        © 2026 SmartCrackers.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

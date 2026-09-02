@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Recommendation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <h1 class="title">
+        🤖 AI Product Recommendation
+    </h1>
+
+    <form method="POST">
+
+        <label>💰 Your Budget</label>
+        <br>
+
+        <input type="number"
+               name="budget"
+               placeholder="Enter your budget"
+               required>
+
+        <br><br>
+
+        <label>👨‍👩‍👧 Number of People</label>
+        <br>
+
+        <input type="number"
+               name="people"
+               placeholder="Number of people"
+               required>
+
+        <br><br>
+
+        <label>🎉 Occasion</label>
+        <br>
+
+        <select name="occasion">
+            <option>Diwali</option>
+            <option>Festival</option>
+            <option>Family Celebration</option>
+        </select>
+
+        <br><br>
+
+        <button class="btn" type="submit">
+            🤖 Get AI Recommendation
+        </button>
+
+    </form>
+
+    {% if recommendations %}
+
+    <h2>⭐ Recommended Products</h2>
+
+    {% for product in recommendations %}
+
+    <div class="product-card">
+
+        <h3>{{ product.name }}</h3>
+
+        <p>Category: {{ product.category }}</p>
+
+        <p class="price">
+            ₹{{ product.price }}
+        </p>
+
+        <p>{{ product.description }}</p>
+
+    </div>
+
+    {% endfor %}
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

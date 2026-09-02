@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartCrackers | Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .admin-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .admin-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .dashboard-card h2 {
+            font-size: 35px;
+            margin: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .admin-section {
+            background: white;
+            margin-top: 40px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .admin-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .admin-table th {
+            background: #222;
+            color: white;
+        }
+
+        .back-button {
+            display: block;
+            width: 180px;
+            margin: 30px auto;
+            text-align: center;
+            background: #222;
+            color: white;
+            padding: 13px;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/login">🔐 Login</a>
+
+        <a href="/register">📝 Register</a>
+
+        <a href="/recommendation">🤖 AI Recommendation</a>
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/chatbot">💬 AI Chatbot</a>
+
+        <a href="/products">🎆 Products</a>
+
+        <a href="/orders">📦 My Orders</a>
+
+        <a href="/cart">🛒 Cart</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<div class="admin-container">
+
+    <h1 class="admin-title">
+        📊 Admin Dashboard
+    </h1>
+
+
+    <!-- STATISTICS -->
+
+    <div class="dashboard-grid">
+
+
+        <div class="dashboard-card">
+
+            <h2>
+                👥
+            </h2>
+
+            <h2>
+                {{ total_users }}
+            </h2>
+
+            <p>
+                Total Users
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h2>
+                🎆
+            </h2>
+
+            <h2>
+                {{ total_products }}
+            </h2>
+
+            <p>
+                Total Products
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h2>
+                📦
+            </h2>
+
+            <h2>
+                {{ total_orders }}
+            </h2>
+
+            <p>
+                Total Orders
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h2>
+                💰
+            </h2>
+
+            <h2>
+                ₹{{ total_sales }}
+            </h2>
+
+            <p>
+                Total Sales
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- RECENT ORDERS -->
+
+    <div class="admin-section">
+
+        <h2>
+            📦 Recent Orders
+        </h2>
+
+
+        <table class="admin-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Order ID
+                    </th>
+
+                    <th>
+                        Customer
+                    </th>
+
+                    <th>
+                        Mobile
+                    </th>
+
+                    <th>
+                        Total
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for order in recent_orders %}
+
+                <tr>
+
+                    <td>
+                        {{ order.id }}
+                    </td>
+
+                    <td>
+                        {{ order.customer_name }}
+                    </td>
+
+                    <td>
+                        {{ order.mobile }}
+                    </td>
+
+                    <td>
+                        ₹{{ order.total }}
+                    </td>
+
+                    <td>
+                        🟢 Confirmed
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="5">
+                        No orders available.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- AI SALES -->
+
+    <div class="admin-section">
+
+        <h2>
+            🤖 AI Sales Prediction
+        </h2>
+
+        <p style="text-align:center;">
+
+            SmartCrackers AI can analyze previous sales
+            and help predict future product demand.
+
+        </p>
+
+        <div style="text-align:center;">
+
+            <strong>
+                📈 Future Demand Analysis
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <a href="/" class="back-button">
+        🏠 Back to Home
+    </a>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <h3>
+        🎆 SmartCrackers
+    </h3>
+
+    <p>
+        AI-Based Smart Crackers Shopping Website
+    </p>
+
+    <p>
+        © 2026 SmartCrackers
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

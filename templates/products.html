@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>SmartCrackers Products</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">🏠 Home</a>
+
+        <a href="/products">🎆 Products</a>
+
+        <a href="/recommendation">🤖 AI Recommendation</a>
+
+        <a href="/cart">🛒 Cart</a>
+
+        <a href="/orders">📦 My Orders</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================
+     PRODUCTS
+========================================== -->
+
+<div class="container">
+
+    <h1 class="title">
+        🎆 Our Products
+    </h1>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <form action="/products" method="GET">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="🔍 Search products..."
+                value="{{ search }}"
+            >
+
+            <button class="btn" type="submit">
+                🔍 Search
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <div class="filter-box">
+
+        <form action="/products" method="GET">
+
+            <select name="category">
+
+                <option value="">
+                    All Categories
+                </option>
+
+                <option value="Sparklers">
+                    Sparklers
+                </option>
+
+                <option value="Gift Box">
+                    Gift Box
+                </option>
+
+                <option value="Family">
+                    Family
+                </option>
+
+                <option value="Flower Pots">
+                    Flower Pots
+                </option>
+
+            </select>
+
+
+            <select name="price">
+
+                <option value="">
+                    All Prices
+                </option>
+
+                <option value="500">
+                    Under ₹500
+                </option>
+
+                <option value="1000">
+                    Under ₹1000
+                </option>
+
+            </select>
+
+
+            <button class="btn" type="submit">
+                🔎 Filter
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- PRODUCT GRID -->
+
+    <div class="products">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <h3>
+                {{ product.name }}
+            </h3>
+
+
+            <p>
+                <strong>Category:</strong>
+                {{ product.category }}
+            </p>
+
+
+            <p class="price">
+                ₹{{ product.price }}
+            </p>
+
+
+            <p>
+                {{ product.description }}
+            </p>
+
+
+            <p>
+                <strong>Stock:</strong>
+                {{ product.stock }}
+            </p>
+
+
+            <!-- ADD TO CART -->
+
+            <form
+                action="/add_to_cart"
+                method="POST"
+            >
+
+                <input
+                    type="hidden"
+                    name="product_id"
+                    value="{{ product.id }}"
+                >
+
+
+                <button
+                    class="btn"
+                    type="submit"
+                >
+
+                    🛒 Add to Cart
+
+                </button>
+
+            </form>
+
+        </div>
+
+        {% else %}
+
+        <h2>
+            😔 No products found.
+        </h2>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

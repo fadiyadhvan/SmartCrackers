@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Shopping Cart - SmartCrackers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/products">
+            🎆 Products
+        </a>
+
+        <a href="/recommendation">
+            🤖 AI Recommendation
+        </a>
+
+        <a href="/cart">
+            🛒 Cart
+        </a>
+
+        <a href="/orders">
+            📦 My Orders
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     CART
+========================= -->
+
+<div class="container">
+
+    <h1 class="title">
+        🛒 Your Shopping Cart
+    </h1>
+
+
+    {% if cart_items %}
+
+
+    <!-- CART TABLE -->
+
+    <div class="cart-box">
+
+        <div class="cart-header">
+
+            <div>Product</div>
+
+            <div>Category</div>
+
+            <div>Quantity</div>
+
+            <div>Price</div>
+
+            <div>Total</div>
+
+            <div>Action</div>
+
+        </div>
+
+
+        {% for item in cart_items %}
+
+
+        <div class="cart-row">
+
+            <!-- PRODUCT -->
+
+            <div>
+
+                <strong>
+                    {{ item.name }}
+                </strong>
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div>
+
+                {{ item.category }}
+
+            </div>
+
+
+            <!-- QUANTITY -->
+
+            <div class="quantity">
+
+                <a href="/decrease/{{ item.id }}"
+                   class="quantity-btn">
+
+                    ➖
+
+                </a>
+
+
+                <span>
+
+                    {{ item.quantity }}
+
+                </span>
+
+
+                <a href="/increase/{{ item.id }}"
+                   class="quantity-btn">
+
+                    ➕
+
+                </a>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div>
+
+                ₹{{ item.price }}
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div>
+
+                <strong>
+                    ₹{{ item.total }}
+                </strong>
+
+            </div>
+
+
+            <!-- REMOVE -->
+
+            <div>
+
+                <a href="/remove/{{ item.id }}"
+                   class="remove-btn">
+
+                    🗑️ Remove
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+    <!-- GRAND TOTAL -->
+
+    <div class="cart-summary">
+
+        <h2>
+
+            💰 Grand Total:
+            ₹{{ grand_total }}
+
+        </h2>
+
+
+        <a href="/checkout">
+
+            <button class="checkout-btn">
+
+                🛍️ Proceed to Checkout
+
+            </button>
+
+        </a>
+
+
+        <a href="/products">
+
+            <button class="continue-btn">
+
+                🎆 Continue Shopping
+
+            </button>
+
+        </a>
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- EMPTY CART -->
+
+    <div class="empty-cart">
+
+        <h2>
+            🛒 Your Cart is Empty
+        </h2>
+
+        <p>
+            Add some products to your cart.
+        </p>
+
+
+        <a href="/products">
+
+            <button class="btn">
+
+                🎆 Browse Products
+
+            </button>
+
+        </a>
+
+    </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>

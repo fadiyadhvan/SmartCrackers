@@ -1,0 +1,407 @@
+/* =========================
+   SMARTCRACKERS PROFESSIONAL STYLE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #222;
+
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.82),
+            rgba(255, 255, 255, 0.82)
+        ),
+        url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background: rgba(15, 15, 15, 0.97);
+
+    padding: 18px 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd54a;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 70vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+}
+
+.hero-content {
+    width: 100%;
+
+    max-width: 850px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 50px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.hero h1 {
+    font-size: 48px;
+
+    margin: 0 0 15px;
+}
+
+.hero h2 {
+    font-size: 28px;
+
+    margin: 0 0 20px;
+}
+
+.hero p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #555;
+}
+
+
+/* =========================
+   HOME BUTTONS
+========================= */
+
+.hero-buttons {
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.home-btn {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    background: #222;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background: #555;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 30px auto 70px;
+
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 35px;
+
+    margin-bottom: 35px;
+}
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.feature-card h3 {
+    font-size: 20px;
+}
+
+.feature-card p {
+    color: #555;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.container {
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: 40px auto;
+}
+
+.title {
+    text-align: center;
+
+    font-size: 40px;
+
+    margin-bottom: 40px;
+}
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 25px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.23);
+}
+
+.product-card h3 {
+    font-size: 23px;
+}
+
+.price {
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+.btn {
+    background: #222;
+
+    color: white;
+
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background: #555;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+input,
+select,
+textarea {
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: rgba(15, 15, 15, 0.97);
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px;
+
+    margin-top: 50px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .hero-content {
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Orders - SmartCrackers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/products">
+            🎆 Products
+        </a>
+
+        <a href="/recommendation">
+            🤖 AI Recommendation
+        </a>
+
+        <a href="/cart">
+            🛒 Cart
+        </a>
+
+        <a href="/orders">
+            📦 My Orders
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     ORDERS
+========================= -->
+
+<div class="container">
+
+    <h1 class="title">
+        📦 My Orders
+    </h1>
+
+
+    {% if orders %}
+
+
+        {% for order in orders %}
+
+
+        <div class="product-card">
+
+            <h2>
+                🧾 Order #{{ order.order_id }}
+            </h2>
+
+
+            <p>
+                📅 Date:
+                {{ order.order_date }}
+            </p>
+
+
+            <p>
+                👤 Customer:
+                {{ order.customer_name }}
+            </p>
+
+
+            <p>
+                📱 Mobile:
+                {{ order.phone }}
+            </p>
+
+
+            <p>
+                📍 Address:
+                {{ order.address }}
+            </p>
+
+
+            <p>
+                🏙️ City:
+                {{ order.city }}
+            </p>
+
+
+            <p>
+                💳 Payment:
+                {{ order.payment }}
+            </p>
+
+
+            <p class="price">
+
+                💰 Total:
+                ₹{{ order.total }}
+
+            </p>
+
+
+            <p>
+
+                🟢 Status:
+                {{ order.status }}
+
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="product-card">
+
+            <h2>
+                📦 No Orders Yet
+            </h2>
+
+
+            <p>
+                You have not placed any orders yet.
+            </p>
+
+
+            <br>
+
+
+            <a href="/products">
+
+                <button class="btn">
+
+                    🎆 Start Shopping
+
+                </button>
+
+            </a>
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>

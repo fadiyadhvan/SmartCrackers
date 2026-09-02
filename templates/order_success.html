@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Order Successful - SmartCrackers</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     NAVBAR
+========================================== -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        🎆 SmartCrackers
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/">
+            🏠 Home
+        </a>
+
+        <a href="/products">
+            🎆 Products
+        </a>
+
+        <a href="/recommendation">
+            🤖 AI Recommendation
+        </a>
+
+        <a href="/cart">
+            🛒 Cart
+        </a>
+
+        <a href="/orders">
+            📦 My Orders
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ==========================================
+     SUCCESS PAGE
+========================================== -->
+
+<div class="container success-container">
+
+
+    <div class="success-box">
+
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+            🎉
+        </div>
+
+
+        <h1>
+            Order Placed Successfully!
+        </h1>
+
+
+        <p class="success-message">
+            Thank you for shopping with SmartCrackers!
+        </p>
+
+
+        <hr>
+
+
+        <!-- ORDER ID -->
+
+        <div class="order-id">
+
+            <span>
+                🆔 Order ID
+            </span>
+
+            <strong>
+                {{ order_id }}
+            </strong>
+
+        </div>
+
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="order-details">
+
+            <h2>
+                👤 Customer Details
+            </h2>
+
+
+            <div class="detail-row">
+
+                <span>
+                    Name
+                </span>
+
+                <strong>
+                    {{ name }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    📱 Mobile
+                </span>
+
+                <strong>
+                    {{ phone }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    📍 Address
+                </span>
+
+                <strong>
+                    {{ address }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    🏙️ City
+                </span>
+
+                <strong>
+                    {{ city }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>
+                    💳 Payment
+                </span>
+
+                <strong>
+                    {{ payment }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="order-total">
+
+            <span>
+                💰 Order Total
+            </span>
+
+            <strong>
+                ₹{{ grand_total }}
+            </strong>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="order-status">
+
+            🟢 Order Status:
+            <strong>
+                Confirmed
+            </strong>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="success-buttons">
+
+
+            <a href="/products">
+
+                <button class="btn">
+
+                    🎆 Continue Shopping
+
+                </button>
+
+            </a>
+
+
+            <a href="/orders">
+
+                <button class="checkout-btn">
+
+                    📦 View My Orders
+
+                </button>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
